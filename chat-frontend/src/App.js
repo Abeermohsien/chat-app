@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Auth from './components/Auth';
+import Chat from './components/Chat';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [token, setToken] = useState('');
+    const [user, setUser] = useState(null);
+
+    return (
+        <div className="App">
+            {token ? <Chat token={token} user={user} /> : <Auth setToken={setToken} setUser={setUser} />}
+        </div>
+    );
 }
 
 export default App;
